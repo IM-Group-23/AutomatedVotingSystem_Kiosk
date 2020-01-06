@@ -1,0 +1,66 @@
+
+    <!-- <ion-header translucent>
+      <ion-toolbar>
+        <ion-title>Create Account</ion-title>
+      </ion-toolbar>
+    </ion-header> -->
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="one">Step 1</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+
+
+    <ion-content fullscreen>
+
+
+
+      <form onsubmit="processForm(event)">
+   
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label class="font-size-one" position="stacked"> National ID Number (NIC) : <ion-text color="danger" autofocus = "true">*</ion-text></ion-label>
+            <ion-label class="font-size-one" position="stacked"> ජාතික හැඳුනුම්පත් අංකය : <ion-text color="danger" autofocus = "true">*</ion-text></ion-label>
+            <br /><br />
+            <ion-input class="font-size-one" required type="text" oninput="handleFirstNameValue(event)" autofocus = "true" placeholder="00000000000V"></ion-input>
+          </ion-item>
+
+         
+        </ion-list>
+
+        <div class="ion-padding">
+          <ion-button expand="block" type="submit" class="ion-no-margin">Next</ion-button>
+        </div>
+      </form>
+    </ion-content>
+    <!-- <ion-alert-controller></ion-alert-controller> -->
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+
+
+
+    <!-- Move this Part to the ts file -->
+  <script>
+    const controller = document.querySelector('ion-alert-controller');
+    let firstName, lastName;
+    function processForm(event) {
+      event.preventDefault();
+      controller.create({
+        header: 'Account Created',
+        message: `Created account for: <b>${firstName} ${lastName}</b>`,
+        buttons: [{
+          text: 'OK'
+        }]
+      }).then(alert => alert.present());
+    }
+    function handleFirstNameValue(event) {
+      firstName = event.target.value;
+    }
+    function handleLastNameValue(event) {
+      lastName = event.target.value;
+    }
+  </script>

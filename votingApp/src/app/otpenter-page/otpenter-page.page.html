@@ -1,0 +1,63 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="one">Step 2</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content fullscreen>
+
+
+<br><br>
+<div style="padding-left:20px; padding-right: 20px;"> 
+  <h4 class="topic" style="margin-bottom: 0px;">Please, Enter the OTP Received to Your Inbox .</h4>
+  <h4 class="topic" style="margin-top:5px;">ඔබෙ දුරකථනයට ලැබෙන OTP අංකය ඇතුලු කරන්න .</h4>
+</div>
+
+<br /><br />
+<div class="formboard">
+
+<form class="form-container" style="padding-left: 20px; padding-right: 20px;">
+  <div>
+    <ion-input name="a" #a (keyup)="moveFocus($event,b,'')" type="tel" placeholder="0"
+      maxlength="1">
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input name="b" #b (keyup)="moveFocus($event,c,a)" type="tel" placeholder="0"
+      maxlength="1">
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input name="c"  #c (keyup)="moveFocus($event,d,b)" type="tel" placeholder="0"
+      maxlength="1">
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input name="d"  #d (keyup)="moveFocus($event,e,c)" type="tel" placeholder="0"
+      maxlength="1">
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input name="e"  #e (keyup)="moveFocus($event,f,d)" type="tel" placeholder="0"
+      maxlength="1">
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input name="f"  #f (keyup)="moveFocus($event,'',e)" type="tel" placeholder="0"
+      maxlength="1"></ion-input>
+  </div>
+
+</form>
+
+</div>
+
+</ion-content>
