@@ -12,7 +12,7 @@
 
 
 <br><br>
-<div style="padding-left:20px; padding-right: 20px;"> 
+<div style="padding-left:20px; padding-right: 20px; margin-top:20%;"> 
   <h4 class="topic" style="margin-bottom: 0px;">Please, Enter the OTP Received to Your Inbox .</h4>
   <h4 class="topic" style="margin-top:5px;">ඔබෙ දුරකථනයට ලැබෙන OTP අංකය ඇතුලු කරන්න .</h4>
 </div>
@@ -21,7 +21,10 @@
 <div class="formboard">
 
 <form class="form-container" style="padding-left: 20px; padding-right: 20px;">
+
+  
   <div>
+
     <ion-input name="a" #a (keyup)="moveFocus($event,b,'')" type="tel" placeholder="0"
       maxlength="1">
     </ion-input>
@@ -56,8 +59,16 @@
       maxlength="1"></ion-input>
   </div>
 
-</form>
 
+
+  
+
+</form>
 </div>
+
+<div class="ion-padding">
+  <ion-button expand="block" type="submit" class="ion-no-margin" (click)= "onSubmit()" >Next</ion-button>
+</div>
+
 
 </ion-content>

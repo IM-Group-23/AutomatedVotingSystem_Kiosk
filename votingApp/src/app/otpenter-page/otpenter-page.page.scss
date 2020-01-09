@@ -16,13 +16,13 @@ form{
         }
         ion-input{
             text-align: center;
-            border: 1px solid #6ef78e;
+            border: 1px solid #14f348;
             border-radius: 5px;
             margin-top: 8px;
             font-size: 14px;
             padding: 3px !important;
             padding-left: 0px !important;
-            color: #057d3f;
+            color: #0d18f1;
             font-weight: 600;
             --padding-start: 0;
         }
@@ -39,4 +39,5 @@ h4.topic {
 
 .formboard {
     border: 1px solid black;
+    background-color: rgba(153, 229, 226, 0.571);
 }

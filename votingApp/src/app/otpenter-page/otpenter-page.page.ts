@@ -25,4 +25,8 @@ export class OTPEnterPagePage implements OnInit {
 
   }
 
+  onSubmit(){
+    
+  }
+
 }
