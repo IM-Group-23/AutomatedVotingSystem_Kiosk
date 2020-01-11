@@ -9,5 +9,8 @@ export class HomePage {
 
   constructor() {}
 
+  onClicked() {
+    
+  }
 
 }

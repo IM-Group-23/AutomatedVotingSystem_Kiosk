@@ -6,7 +6,13 @@
     </ion-header> -->
 
     <ion-header>
+     
+
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+
         <ion-title class="one">Step 1</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -38,12 +44,12 @@
           <ion-button expand="block" type="submit" class="ion-no-margin">Next</ion-button>
         </div>
       </form>
+
+      <ion-button routerLink="/otpenter-page">Next</ion-button>
     </ion-content>
     <!-- <ion-alert-controller></ion-alert-controller> -->
 
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
+
 
 
 
