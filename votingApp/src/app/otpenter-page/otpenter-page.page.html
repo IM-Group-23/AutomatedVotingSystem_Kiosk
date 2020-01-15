@@ -26,42 +26,42 @@
 <br /><br />
 <div class="formboard">
 
-<form class="form-container" style="padding-left: 20px; padding-right: 20px;">
+<form class="form-container" style="padding-left: 20px; padding-right: 20px;" (submit)= "onSubmit()">
 
   
   <div>
-
-    <ion-input name="a" #a (keyup)="moveFocus($event,b,'')" type="tel" placeholder="0"
+ 
+    <ion-input name="a" #a (keypress)="moveFocus($event,b,'')" type="tel" placeholder="0"  [(ngModel)]="form1.a"
       maxlength="1">
     </ion-input>
   </div>
 
   <div>
-    <ion-input name="b" #b (keyup)="moveFocus($event,c,a)" type="tel" placeholder="0"
+    <ion-input name="b" #b (keypress)="moveFocus($event,c,a)" type="tel" placeholder="0" [(ngModel)]="form1.b"
       maxlength="1">
     </ion-input>
   </div>
 
   <div>
-    <ion-input name="c"  #c (keyup)="moveFocus($event,d,b)" type="tel" placeholder="0"
+    <ion-input name="c"  #c (keypress)="moveFocus($event,d,b)" type="tel" placeholder="0" [(ngModel)]="form1.c"
       maxlength="1">
     </ion-input>
   </div>
 
   <div>
-    <ion-input name="d"  #d (keyup)="moveFocus($event,e,c)" type="tel" placeholder="0"
+    <ion-input name="d"  #d (keypress)="moveFocus($event,e,c)" type="tel" placeholder="0" [(ngModel)]="form1.d"
       maxlength="1">
     </ion-input>
   </div>
 
   <div>
-    <ion-input name="e"  #e (keyup)="moveFocus($event,f,d)" type="tel" placeholder="0"
+    <ion-input name="e"  #e (keypress)="moveFocus($event,f,d)" type="tel" placeholder="0" [(ngModel)]="form1.e"
       maxlength="1">
     </ion-input>
   </div>
 
   <div>
-    <ion-input name="f"  #f (keyup)="moveFocus($event,'',e)" type="tel" placeholder="0"
+    <ion-input name="f"  #f  type="tel" placeholder="0" [(ngModel)]="form1.f"
       maxlength="1"></ion-input>
   </div>
 
@@ -73,7 +73,11 @@
 </div>
 
 <div class="ion-padding">
-  <ion-button expand="block" type="submit" class="ion-no-margin" (click)= "onSubmit()" >Next</ion-button>
+  <ion-button expand="block" type="submit" name="next" #next class="ion-no-margin" (click)= "onSubmit()" >Next</ion-button>
+</div>
+
+<div>
+   {{ this.userid }}
 </div>
 
 

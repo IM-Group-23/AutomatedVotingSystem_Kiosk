@@ -1,0 +1,31 @@
+<ion-header>
+     
+  <ion-toolbar>
+    <ion-title class="one">Select</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div  *ngFor="let votee of votees">
+   
+
+    <ion-card>
+      <ion-item >
+        <ion-icon name="pin" slot="start"></ion-icon>
+        <ion-label class="color-panel">{{votee.nameE}}<br />{{votee.nameS}}</ion-label>
+        
+      </ion-item>
+    
+      <!-- <ion-card-content>
+        This is content, without any paragraph or header tags,
+        within an ion-card-content element.
+      </ion-card-content> -->
+    </ion-card>
+
+  </div>
+
+
+  
+</ion-content>
