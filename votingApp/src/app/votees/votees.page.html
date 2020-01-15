@@ -11,10 +11,10 @@
   <div  *ngFor="let votee of votees">
    
 
-    <ion-card>
-      <ion-item >
+    <ion-card button="true" color="success" >
+      <ion-item>
         <ion-icon name="pin" slot="start"></ion-icon>
-        <ion-label class="color-panel">{{votee.nameE}}<br />{{votee.nameS}}</ion-label>
+        <ion-label style="height: 45px;" color="success">{{votee.nameE}}<br />{{votee.nameS}}</ion-label>
         
       </ion-item>
     
