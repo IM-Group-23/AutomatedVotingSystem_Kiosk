@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-votees',
@@ -7,16 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VoteesPage implements OnInit {
 
-  votees = [{nameE: 'Udith Gayan', nameS: 'උදිත් ගයාන්'},
-            {nameE: 'Sanindu Rathnayaka', nameS: 'සනිදු රත්නායක '},
-            {nameE: 'Dilini Peiris', nameS: 'දිලිනි පිරීස් '},
-            {nameE: 'Roshan Chathuranga', nameS: 'රොෂාන් චතුරංග '},
-            {nameE: 'Dilki Sachini', nameS: 'දිල්කි සචිනි '}
+  otpid: number;
+
+  votees = [{nameE: 'Udith Gayan', nameS: 'උදිත් ගයාන්', number: 1},
+            {nameE: 'Sanindu Rathnayaka', nameS: 'සනිදු රත්නායක ', number: 2},
+            {nameE: 'Dilini Peiris', nameS: 'දිලිනි පිරීස් ', number: 3},
+            {nameE: 'Roshan Chathuranga', nameS: 'රොෂාන් චතුරංග ', number: 4},
+            {nameE: 'Dilki Sachini', nameS: 'දිල්කි සචිනි ', number: 5}
           ];
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute , private router: Router) { }
 
   ngOnInit() {
+    this.activatedRoute.paramMap.subscribe(params => {console.log(params.get('otpid'));
+                                                     
+                                                      this.otpid = parseInt(params.get('otpid')); });
+                                                      
   }
 
 }

@@ -17,7 +17,7 @@
     "max-classes-per-file": false,
     "max-line-length": [
       true,
-      140
+      300
     ],
     "member-access": false,
     "member-ordering": [
@@ -45,6 +45,19 @@
       true,
       "ignore-params"
     ],
+    "htmlhint.options": {
+      "attr-lowercase": [
+        "*ngIf",
+        "ngIf",
+        "*ngFor",
+        "ngFor",
+        "ngSwitch",
+        "ngModel"
+      ],
+      "doctype-first": false
+    },
+    "attr-lowercase": false,
+    "doctype-first": false,
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,

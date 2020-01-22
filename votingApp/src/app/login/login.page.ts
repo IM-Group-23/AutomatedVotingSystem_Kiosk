@@ -4,6 +4,8 @@ import { NavController } from '@ionic/angular';
 import { OTPEnterPagePage } from '../otpenter-page/otpenter-page.page';
 import { Router } from '@angular/router';
 
+import { ElectionService } from './../services/election.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,7 +17,7 @@ export class LoginPage implements OnInit {
   public idNumber = '000000000v';
   public form1 = {userid: ''};
 
-  constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router) { }
+  constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router , public apiService: ElectionService) { }
 
   ngOnInit() {
   }
@@ -43,12 +45,26 @@ export class LoginPage implements OnInit {
       return;
     }
 
-
-    // Test
-    // this.navCtrl.navigateForward('/otpenter-page', {userid: this.form1.userid});
-    this.router.navigate(['/otpenter-page', { userid: this.form1.userid }]);
+   // test
+    // this.router.navigate(['/otpenter-page', { userid: this.form1.userid }]);
 
     // send this to service  hhtp ofrm1
+    this.apiService.checkUserValidity(this.form1).subscribe(res => {
+                                                                     if (res.code === 0) { this.showErrorAlert();
+                                                                                           return; }
+                                                                      else if (res.code === -1) {
+                                                                                                    this.showAlreadyVotedAlert();
+                                                                                                    return;  }
+                                                                      else {
+                                                                        console.log(res.id);
+                                                                        this.router.navigate(['/otpenter-page', { userid: this.form1.userid, otpid: res.id }]);
+                                                                      }
+                                                                    },
+                                                            error => {
+                                                                      console.warn('error occured in login page');
+                                                                      console.warn(error); });
+
+
   }
 
   /*********************************************************************************************** */
