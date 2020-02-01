@@ -1,4 +1,4 @@
-<ion-item (click)="testClick()">
+<ion-item >
     <ion-avatar slot="start">
       <img src="assets/image/voteicon.png">
     </ion-avatar>
@@ -17,7 +17,7 @@
       <h2>ගෝඨාභය රාජපක්ෂ <br/>Gotabhaya Rajapaksha</h2>
       <p>Button on right</p>
     </ion-label>
-    <ion-button slot="end">Vote</ion-button>
+    <ion-button slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
   </ion-item>
 
 
@@ -29,7 +29,7 @@
       <h2>සජිත් ප්‍රේමදාස <br/>Sajith Premadasa</h2>
       <p>Button on right</p>
     </ion-label>
-    <ion-button  slot="end">Vote</ion-button>
+    <ion-button  slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
   </ion-item>
 
   <ion-item>
@@ -40,7 +40,7 @@
       <h2>අනුර කුමාර දිසානායක <br/> Anura Kumara Dissanayake</h2>
       <p>Button on right</p>
     </ion-label>
-    <ion-button slot="end">Vote</ion-button>
+    <ion-button slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
   </ion-item>
 
   <ion-item>
@@ -51,7 +51,7 @@
       <h2>උදිත් ඉන්ද්‍රකාන්ත<br/> Udith Indrakantha</h2>
       <p>Button on right</p>
     </ion-label>
-    <ion-button slot="end">Vote</ion-button>
+    <ion-button slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
   </ion-item>
 
   <ion-item>
@@ -62,7 +62,7 @@
       <h2>මෛත්‍රීපාල සිරිසේන  <br/> Maithripala Sirisena</h2>
       <p>Button on right</p>
     </ion-label>
-    <ion-button slot="end">Vote </ion-button>
+    <ion-button slot="end" (click)= "presentAlertConfirm()">Vote </ion-button>
   </ion-item>
   
   <ion-item>
@@ -73,7 +73,7 @@
       <h2>රනිල් වික්‍රමසිංහ <br/>Ranil Wickramasingha</h2>
       <p>Button on right</p>
     </ion-label>
-    <ion-button  slot="end">Vote</ion-button>
+    <ion-button  slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
   </ion-item>
 
   <ion-item>
@@ -84,16 +84,16 @@
       <h2>ප්‍රමෝදි එදිරිමාන්න <br/> Pramodi Edirimanna</h2>
       <p>Button on right</p>
     </ion-label>
-    <ion-button  slot="end">Vote</ion-button>
+    <ion-button  slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
   </ion-item>
   
 
   
   <ion-item href="#">
     <ion-label>
-      Thumbnail End, Anchor Item
+      Go back <br/>පෙර මෙනුවට
     </ion-label>
     <ion-thumbnail slot="end">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+      
     </ion-thumbnail>
   </ion-item>
