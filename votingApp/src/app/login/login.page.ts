@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { OTPEnterPagePage } from '../otpenter-page/otpenter-page.page';
 import { Router } from '@angular/router';
+import { HttpServiceService } from '../services/http-service.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginPage implements OnInit {
   public idNumber = '000000000v';
   public form1 = {userid: ''};
 
-  constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router, private httpService: HttpServiceService) { }
 
   ngOnInit() {
   }
@@ -30,6 +32,33 @@ export class LoginPage implements OnInit {
   public processForm(event) {
     console.log(this.form1);
     console.log(this.form1.userid);
+
+    this.httpService.sendNIC(this.form1.userid).subscribe((res) => {
+      /* Do something with res*/
+      // Successfull
+      if (res === 'OTP_SENT') {
+        this.router.navigate(['/otpenter-page', { userid: this.form1.userid }]);
+        return;
+      }
+
+      if (res === 'ALREADY_VOTED') {
+        this.showAlreadyVotedAlert();
+        return;
+      }
+
+      if (res === 'INVALID_NIC') {
+        this.showErrorAlert();
+        return;
+      }
+
+      if (res === 'ERROR_LOGGING_IN') {
+        return;
+      }
+
+      
+    }, err => {/*do some error*/});
+
+
 
     // Test
     if(this.form1.userid === '0') {

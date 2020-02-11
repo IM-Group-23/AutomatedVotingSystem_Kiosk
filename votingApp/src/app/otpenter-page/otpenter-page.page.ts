@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
+import { HttpServiceService } from '../services/http-service.service';
 
 @Component({
   selector: 'app-otpenter-page',
@@ -13,7 +15,7 @@ export class OTPEnterPagePage implements OnInit {
   otpNumber: number;
   public userid = '';
 
-  constructor(private activatedRoute: ActivatedRoute , private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute , private router: Router , private httpService: HttpServiceService ) { }
 
   ngOnInit() {
  this.activatedRoute.paramMap.subscribe(params => {console.log(params.get('userid'));
@@ -45,7 +47,22 @@ export class OTPEnterPagePage implements OnInit {
     // tslint:disable-next-line:radix
     this.otpNumber = parseInt(inserted);
 
+
+
+
     // Pass this.otpNumber and this.userid to the http service
+    this.httpService.sendOTP(inserted).subscribe((res) => {
+
+      if (res === true) {
+        this.router.navigate(['/votees']);
+        return;
+      } else {
+        // show error msg
+      }
+      
+    }, err => {} );
+
+
 
     // test
     if(this.userid === '10') {
@@ -56,4 +73,5 @@ export class OTPEnterPagePage implements OnInit {
     
   }
 
+  
 }
