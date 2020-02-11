@@ -11,6 +11,13 @@ export class VotingListPage {
 
   constructor(public alertController: AlertController) {}
 
+
+  candidate = [{nameE: 'Gotabhaya Rajapaksha', nameS: 'ගෝඨාභය රාජපක්ෂ',party : 'SLPP', src:'assets/image/podujana.jpg' },
+            {nameE: 'Sajith Premadasa', nameS: 'සජිත් ප්‍රේමදාස', party: 'UPFA', src:'assets/image/hansayablack.png'},
+            {nameE: 'Maithripala Sirisena', nameS: 'මෛත්‍රීපාල සිරිසේන', party :'SLFP',src :'assets/image/chair.png'},
+            {nameE: 'Ranil Wickramasingha', nameS: 'රනිල් වික්‍රමසිංහ', party: 'UNP', src : 'assets/image/unpblack.jpg'}
+          ];
+
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Alert',

@@ -8,95 +8,23 @@
   </ion-item>
 
 
+  <div  *ngFor="let candi of candidate ">
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="{{candi.src}}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{candi.nameS}} <br/>{{candi.nameE}}</h2>
+        <p>{{candi.party}}</p>
+      </ion-label>
+      <ion-button slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
+    </ion-item>
   
+   
   
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/image/podujana.jpg">
-    </ion-thumbnail>
-    <ion-label>
-      <h2>ගෝඨාභය රාජපක්ෂ <br/>Gotabhaya Rajapaksha</h2>
-      <p>Button on right</p>
-    </ion-label>
-    <ion-button slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
-  </ion-item>
-
-
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/image/hansayablack.png">
-    </ion-thumbnail>
-    <ion-label>
-      <h2>සජිත් ප්‍රේමදාස <br/>Sajith Premadasa</h2>
-      <p>Button on right</p>
-    </ion-label>
-    <ion-button  slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
-  </ion-item>
-
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/image/jvpblack.png">
-    </ion-thumbnail>
-    <ion-label>
-      <h2>අනුර කුමාර දිසානායක <br/> Anura Kumara Dissanayake</h2>
-      <p>Button on right</p>
-    </ion-label>
-    <ion-button slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
-  </ion-item>
-
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/image/trainnew.png">
-    </ion-thumbnail>
-    <ion-label>
-      <h2>උදිත් ඉන්ද්‍රකාන්ත<br/> Udith Indrakantha</h2>
-      <p>Button on right</p>
-    </ion-label>
-    <ion-button slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
-  </ion-item>
-
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/image/chair.png">
-    </ion-thumbnail>
-    <ion-label>
-      <h2>මෛත්‍රීපාල සිරිසේන  <br/> Maithripala Sirisena</h2>
-      <p>Button on right</p>
-    </ion-label>
-    <ion-button slot="end" (click)= "presentAlertConfirm()">Vote </ion-button>
-  </ion-item>
-  
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/image/unpblack.jpg">
-    </ion-thumbnail>
-    <ion-label>
-      <h2>රනිල් වික්‍රමසිංහ <br/>Ranil Wickramasingha</h2>
-      <p>Button on right</p>
-    </ion-label>
-    <ion-button  slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
-  </ion-item>
-
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/image/broom.png">
-    </ion-thumbnail>
-    <ion-label>
-      <h2>ප්‍රමෝදි එදිරිමාන්න <br/> Pramodi Edirimanna</h2>
-      <p>Button on right</p>
-    </ion-label>
-    <ion-button  slot="end" (click)= "presentAlertConfirm()">Vote</ion-button>
-  </ion-item>
   
   
   
 
   
-  <ion-item href="#">
-    <ion-label>
-      Go back <br/>පෙර මෙනුවට
-    </ion-label>
-    <ion-thumbnail slot="end">
-      
-    </ion-thumbnail>
-  </ion-item>
