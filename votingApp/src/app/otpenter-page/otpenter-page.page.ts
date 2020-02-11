@@ -59,7 +59,7 @@ export class OTPEnterPagePage implements OnInit {
       } else {
         // show error msg
       }
-      
+
     }, err => {} );
 
 
@@ -69,9 +69,5 @@ export class OTPEnterPagePage implements OnInit {
       this.router.navigate(['/votees']);
       return;
     }
-    
-    
   }
-
-  
 }

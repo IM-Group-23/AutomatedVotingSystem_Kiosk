@@ -23,7 +23,14 @@ sendOTP( otp: string): Observable<any> {
   return this.http.post('http://localhost:8080/avs/api/v1/voter/otp-validate', '', { params: paramss } );
 }
 
+// Vote Submit
+// tslint:disable-next-line: variable-name
+voteSubmited( voter_nic: string, candidate: string): Observable<any> {
+  const paramss = new HttpParams().set('voter_nic', voter_nic  ).set('candidate', candidate  );
 
+
+  return this.http.post('http://localhost:8080/avs/api/v1/voter/vote', '', { params: paramss } );
+}
 
 
 

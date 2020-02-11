@@ -52,7 +52,8 @@ export class LoginPage implements OnInit {
       }
 
       if (res === 'ERROR_LOGGING_IN') {
-        return;
+       this.showErrorlogin()
+       return;
       }
 
       
@@ -137,5 +138,32 @@ async showAlreadyVotedAlert() {
 }
 
 /*********************************************************************************************************************** */
+
+
+async showErrorlogin() {
+
+  const alert = await this.alertController.create({
+    header: 'Login Error',
+    message: '<br /> Login is Unsucessful<br />පිවිසීම අසාර්ථකයි.',
+    // buttons: ['OK'],
+    animated: true,
+    backdropDismiss: true,
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+          // write codes needs to be run when clicked cancel
+        }
+      }
+  ]
+
+});
+
+  await alert.present();
+
+}
 
 }
