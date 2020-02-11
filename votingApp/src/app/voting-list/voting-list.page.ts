@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController} from '@ionic/angular';
+import { Router } from '@angular/router';
+import { HttpServiceService } from '../services/http-service.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-voting-list',
@@ -9,7 +12,8 @@ import {AlertController} from '@ionic/angular';
 
 export class VotingListPage {
 
-  constructor(public alertController: AlertController) {}
+  // tslint:disable-next-line: max-line-length
+  constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router, private httpService: HttpServiceService) {}
 
 
   candidate = [{nameE: 'Gotabhaya Rajapaksha', nameS: 'ගෝඨාභය රාජපක්ෂ',party : 'SLPP', src:'assets/image/podujana.jpg' },
@@ -55,6 +59,8 @@ export class VotingListPage {
         }, {
           text: 'Confirm',
           handler: () => {
+            voteSubmited();
+
             console.log('Confirm Okay');
           }
         }
