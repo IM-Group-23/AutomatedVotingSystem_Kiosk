@@ -59,7 +59,12 @@ export class VotingListPage {
         }, {
           text: 'Confirm',
           handler: () => {
-            voteSubmited();
+            this.httpService.voteSubmited;
+            setTimeout(() => {
+              this.router.navigate(['/home']);
+          }, 3000); 
+          
+
 
             console.log('Confirm Okay');
           }

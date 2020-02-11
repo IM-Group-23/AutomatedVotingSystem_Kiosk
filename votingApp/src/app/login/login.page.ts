@@ -56,7 +56,6 @@ export class LoginPage implements OnInit {
        return;
       }
 
-      
     }, err => {/*do some error*/});
 
 
