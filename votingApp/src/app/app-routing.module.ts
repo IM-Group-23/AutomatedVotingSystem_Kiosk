@@ -13,9 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./otpenter-page/otpenter-page.module').then( m => m.OTPEnterPagePageModule)
   },
   {
-    path: 'votees',
-    loadChildren: () => import('./votees/votees.module').then( m => m.VoteesPageModule)
+    path: 'voting-list',
+    loadChildren: () => import('./voting-list/voting-list.module').then( m => m.VotingListPageModule)
   },
+
 ];
 
 @NgModule({

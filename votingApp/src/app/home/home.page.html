@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content class="main-content">
+<ion-content class="main-content" >
   <!-- <div class="ion-padding">
     The world is your oyster.
     <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
@@ -16,11 +16,21 @@
   <!-- <div>
     <img src="assets/image/vote4.png" />
   </div> -->
+  
+  
+  
+    <ion-item *ngIf="showImage" style="padding-top: 200px;">
+        <img src="assets/image/vote7.png" height="150px" width="650px"  >
+        
+        
+   </ion-item>
 
-  <div style="margin-top:50%;">
-    <img src="assets/image/vote7.png" />
-  </div>
 
-  <button (click)="onClicked()" routerLink="/login">Next</button>
+
+
+
+ 
+
+  
 
 </ion-content>

@@ -1,0 +1,27 @@
+<ion-item >
+    <ion-avatar slot="start">
+      <img src="assets/image/voteicon.png">
+    </ion-avatar>
+    <ion-label color="primary">
+        අපේක්ෂකයා තෝරන්න <br/>Select the Candidate
+    </ion-label>
+  </ion-item>
+
+
+  <div  *ngFor="let candi of newCandidates">
+
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="{{candi.img}}">
+      </ion-thumbnail>
+
+      <ion-label>
+        <h2>{{candi.name}}</h2> <br/>
+            <!-- {{candi.nameE}}</h2> -->
+        <p>{{candi.party}}</p>
+     </ion-label>
+
+      <ion-button slot="end" (click)= "presentAlertConfirm(candi.name)">Vote</ion-button>
+    </ion-item>
+
+  </div>
