@@ -164,7 +164,7 @@ console.warn(error);
           cssClass: 'secondary',
           handler: () => {
             console.log('Show Contestants');
-            this.router.navigate(['/votees', { otpid: this.otpid }]);
+            this.router.navigate(['/voting-list', { otpid: this.otpid }]);
             // write codes needs to be run when clicked cancel
           }
         }
