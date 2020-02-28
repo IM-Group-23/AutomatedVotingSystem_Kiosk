@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,11 +7,25 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+ 
 
-  constructor() {}
+  showImage = true;
+   
+ 
+
+  constructor(private router: Router) {}
+
+ngOnInit() {
+    // do init at here for current route.
+
+    setTimeout(() => {
+        this.router.navigate(['/login']);
+    }, 4000);
+   }
 
   onClicked() {
-    
+
   }
 
+  
 }

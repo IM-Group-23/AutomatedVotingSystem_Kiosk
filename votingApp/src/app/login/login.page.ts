@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { OTPEnterPagePage } from '../otpenter-page/otpenter-page.page';
 import { Router } from '@angular/router';
+import { HttpServiceService } from '../services/http-service.service';
 
 import { ElectionService } from './../services/election.service';
 
@@ -17,7 +18,9 @@ export class LoginPage implements OnInit {
   public idNumber = '000000000v';
   public form1 = {userid: ''};
 
-  constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router , public apiService: ElectionService) { }
+ // constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router , public apiService: ElectionService) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router, private httpService: HttpServiceService) { }
 
   ngOnInit() {
   }
@@ -33,8 +36,37 @@ export class LoginPage implements OnInit {
     console.log(this.form1);
     console.log(this.form1.userid);
 
+    sessionStorage.setItem('nic',this.form1.userid);
+
+    this.httpService.sendNIC(this.form1.userid).subscribe((res) => {
+      /* Do something with res*/
+      // Successfull
+      if (res === 'OTP_SENT') {
+        this.router.navigate(['/otpenter-page', { userid: this.form1.userid }]);
+        return;
+      }
+
+      if (res === 'ALREADY_VOTED') {
+        this.showAlreadyVotedAlert();
+        return;
+      }
+
+      if (res === 'INVALID_NIC') {
+        this.showErrorAlert();
+        return;
+      }
+
+      if (res === 'ERROR_LOGGING_IN') {
+       this.showErrorlogin()
+       return;
+      }
+
+    }, err => {/*do some error*/});
+
+
+
     // Test
-    if(this.form1.userid === '0') {
+    if (this.form1.userid === '0') {
     this.showErrorAlert();
     return;
     }
@@ -48,21 +80,7 @@ export class LoginPage implements OnInit {
    // test
     // this.router.navigate(['/otpenter-page', { userid: this.form1.userid }]);
 
-    // send this to service  hhtp ofrm1
-    this.apiService.checkUserValidity(this.form1).subscribe(res => {
-                                                                     if (res.code === 0) { this.showErrorAlert();
-                                                                                           return; }
-                                                                      else if (res.code === -1) {
-                                                                                                    this.showAlreadyVotedAlert();
-                                                                                                    return;  }
-                                                                      else {
-                                                                        console.log(res.id);
-                                                                        this.router.navigate(['/otpenter-page', { userid: this.form1.userid, otpid: res.id }]);
-                                                                      }
-                                                                    },
-                                                            error => {
-                                                                      console.warn('error occured in login page');
-                                                                      console.warn(error); });
+
 
 
   }
@@ -124,5 +142,32 @@ async showAlreadyVotedAlert() {
 }
 
 /*********************************************************************************************************************** */
+
+
+async showErrorlogin() {
+
+  const alert = await this.alertController.create({
+    header: 'Login Error',
+    message: '<br /> Login is Unsucessful<br />පිවිසීම අසාර්ථකයි.',
+    // buttons: ['OK'],
+    animated: true,
+    backdropDismiss: true,
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+          // write codes needs to be run when clicked cancel
+        }
+      }
+  ]
+
+});
+
+  await alert.present();
+
+}
 
 }

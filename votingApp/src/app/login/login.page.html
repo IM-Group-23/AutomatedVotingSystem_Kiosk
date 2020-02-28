@@ -10,7 +10,7 @@
 
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="home"></ion-back-button>
+          <ion-back-button defaultHref="/home"></ion-back-button>
         </ion-buttons>
 
         <ion-title class="one">Step 1</ion-title>
@@ -36,16 +36,17 @@
             <br /><br />
             <ion-input class="font-size-one" name="userid" required type="text" #inn [(ngModel)]="form1.userid" (input)="handleFirstNameValue($event)" autofocus = "true" placeholder="00000000000V"></ion-input>
           </ion-item>
-          <ion-label class="input-invalid">  Invalid! අවලංගු අංකයකි!</ion-label>
+          
+          
          
         </ion-list>
 
         <div class="ion-padding">
-          <ion-button expand="block" type="submit" class="ion-no-margin">Next</ion-button>
+          <ion-button expand="block" type="submit" class="ion-no-margin" >Next</ion-button>
         </div>
       </form>
 
-      <ion-button routerLink="/otpenter-page">Next</ion-button>
+      
     </ion-content>
     <!-- <ion-alert-controller></ion-alert-controller> -->
 
