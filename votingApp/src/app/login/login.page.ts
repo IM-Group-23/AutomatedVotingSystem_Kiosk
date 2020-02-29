@@ -16,9 +16,9 @@ export class LoginPage implements OnInit {
 
   public buttonText = 'Step 1';
   public idNumber = '000000000v';
-  public form1 = {userid: ''};
+  public form1 = { userid: '' };
 
- // constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router , public apiService: ElectionService) { }
+  // constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router , public apiService: ElectionService) { }
   // tslint:disable-next-line: max-line-length
   constructor(public alertController: AlertController, public navCtrl: NavController, public router: Router, private httpService: HttpServiceService) { }
 
@@ -27,57 +27,69 @@ export class LoginPage implements OnInit {
 
   // Useless
   public handleFirstNameValue(event) {
-      console.log(event);
+    console.log(event);
   }
 
-/********************************************************************************************* */
+  /********************************************************************************************* */
   // Form Submit
   public processForm(event) {
     console.log(this.form1);
     console.log(this.form1.userid);
 
-    sessionStorage.setItem('nic',this.form1.userid);
 
-    this.httpService.sendNIC(this.form1.userid).subscribe((res) => {
+
+    this.httpService.sendNIC(this.form1.userid).subscribe(res => {
       /* Do something with res*/
       // Successfull
-      if (res === 'OTP_SENT') {
+// JSON.stringify(res);
+      // console.log(res.body);
+      console.log(res);
+      console.log('response came');
+      // var res = JSON.stringify(s);
+      // if (res === 'otp_sent') {
+        if(res === 1){
+        sessionStorage.setItem('nic', this.form1.userid);
         this.router.navigate(['/otpenter-page', { userid: this.form1.userid }]);
         return;
       }
 
-      if (res === 'ALREADY_VOTED') {
+      // if (res === 'already_voted') {
+        if(res === 2){
         this.showAlreadyVotedAlert();
         return;
       }
 
-      if (res === 'INVALID_NIC') {
+      // if (res === 'invalid_nic') {
+        if(res === -1){
         this.showErrorAlert();
         return;
       }
 
-      if (res === 'ERROR_LOGGING_IN') {
-       this.showErrorlogin()
-       return;
+      // if (res === 'error_logging_in') {
+        if(res === 0){
+        this.showErrorlogin()
+        return;
       }
 
-    }, err => {/*do some error*/});
+    }, err => {/*do some error*/
+      console.log(err);
+    });
 
 
 
     // Test
     if (this.form1.userid === '0') {
-    this.showErrorAlert();
-    return;
+      this.showErrorAlert();
+      return;
     }
 
     // Test
-    if(this.form1.userid === '1') {
+    if (this.form1.userid === '1') {
       this.showAlreadyVotedAlert();
       return;
     }
 
-   // test
+    // test
     // this.router.navigate(['/otpenter-page', { userid: this.form1.userid }]);
 
 
@@ -88,86 +100,86 @@ export class LoginPage implements OnInit {
   /*********************************************************************************************** */
 
 
-// Show eRROR POPUP
+  // Show eRROR POPUP
   async showErrorAlert() {
 
-  const alert = await this.alertController.create({
-    header: 'Unauthorized User',
-    message: 'Invalid ID Number. Please Check again.<br /><br />වලංගු ඡන්ද දායකයෙකු නොවේ. නැවත අංකය පරීක්ෂා කරන්න.',
-    // buttons: ['OK'],
-    animated: true,
-    backdropDismiss: true,
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => {
-          console.log('Confirm Cancel');
-          // write codes needs to be run when clicked cancel
+    const alert = await this.alertController.create({
+      header: 'Unauthorized User',
+      message: 'Invalid ID Number. Please Check again.<br /><br />වලංගු ඡන්ද දායකයෙකු නොවේ. නැවත අංකය පරීක්ෂා කරන්න.',
+      // buttons: ['OK'],
+      animated: true,
+      backdropDismiss: true,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+            // write codes needs to be run when clicked cancel
+          }
         }
-      }
-  ]
+      ]
 
-});
+    });
 
-  await alert.present();
+    await alert.present();
 
-}
+  }
 
-/**************************************************************************************************************************** */
+  /**************************************************************************************************************************** */
 
-async showAlreadyVotedAlert() {
-  const alert = await this.alertController.create({
-    header: 'Already Voted',
-    message: 'This user has already voted.<br /><br />ඔබ දැනටමත් ඡන්දය ප්‍රකාශ කර ඇත . නැවත ප්‍රකාශ කළ නොහැක .',
-    // buttons: ['OK'],
-    animated: true,
-    backdropDismiss: true,
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => {
-          console.log('Confirm Cancel');
-          // write codes needs to be run when clicked cancel
+  async showAlreadyVotedAlert() {
+    const alert = await this.alertController.create({
+      header: 'Already Voted',
+      message: 'This user has already voted.<br /><br />ඔබ දැනටමත් ඡන්දය ප්‍රකාශ කර ඇත . නැවත ප්‍රකාශ කළ නොහැක .',
+      // buttons: ['OK'],
+      animated: true,
+      backdropDismiss: true,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+            // write codes needs to be run when clicked cancel
+          }
         }
-      }
-  ]
+      ]
 
-});
+    });
 
-  await alert.present();
-}
+    await alert.present();
+  }
 
-/*********************************************************************************************************************** */
+  /*********************************************************************************************************************** */
 
 
-async showErrorlogin() {
+  async showErrorlogin() {
 
-  const alert = await this.alertController.create({
-    header: 'Login Error',
-    message: '<br /> Login is Unsucessful<br />පිවිසීම අසාර්ථකයි.',
-    // buttons: ['OK'],
-    animated: true,
-    backdropDismiss: true,
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => {
-          console.log('Confirm Cancel');
-          // write codes needs to be run when clicked cancel
+    const alert = await this.alertController.create({
+      header: 'Login Error',
+      message: '<br /> Login is Unsucessful<br />පිවිසීම අසාර්ථකයි.',
+      // buttons: ['OK'],
+      animated: true,
+      backdropDismiss: true,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+            // write codes needs to be run when clicked cancel
+          }
         }
-      }
-  ]
+      ]
 
-});
+    });
 
-  await alert.present();
+    await alert.present();
 
-}
+  }
 
 }

@@ -57,11 +57,11 @@ export class OTPEnterPagePage implements OnInit {
     // tslint:disable-next-line:radix
     this.otpNumber = parseInt(inserted);
 
-
+    var nic = sessionStorage.getItem('nic');
 
 
     // Pass this.otpNumber and this.userid to the http service
-    this.httpService.sendOTP(inserted).subscribe((res) => {
+    this.httpService.sendOTP(inserted, nic).subscribe((res) => {
 
       if (res === true) {
         this.showSuccessMessage();
@@ -81,7 +81,7 @@ export class OTPEnterPagePage implements OnInit {
 
     // test
     if(this.userid === '10') {
-      this.router.navigate(['/votees']);
+      this.router.navigate(['/voting-list']);
       return;
     }
 
@@ -164,7 +164,7 @@ console.warn(error);
           cssClass: 'secondary',
           handler: () => {
             console.log('Show Contestants');
-            this.router.navigate(['/votees', { otpid: this.otpid }]);
+            this.router.navigate(['/voting-list', { otpid: this.otpid }]);
             // write codes needs to be run when clicked cancel
           }
         }

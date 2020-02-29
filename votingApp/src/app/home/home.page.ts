@@ -27,5 +27,8 @@ ngOnInit() {
 
   }
 
+  gotoNext(){
+    this.router.navigate(['/login']);
+  }
   
 }

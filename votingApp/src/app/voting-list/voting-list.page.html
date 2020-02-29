@@ -8,16 +8,16 @@
   </ion-item>
 
 
-  <div  *ngFor="let candi of newCandidates">
+  <div  *ngFor="let candi of candidate">
 
     <ion-item>
       <ion-thumbnail slot="start">
-        <img src="{{candi.img}}">
+        <img src="{{candi.src}}">
       </ion-thumbnail>
 
       <ion-label>
-        <h2>{{candi.name}}</h2> <br/>
-            <!-- {{candi.nameE}}</h2> -->
+        <!-- <h2>{{candi.name}}</h2> <br/> -->
+            <h2>{{candi.nameE}}</h2>
         <p>{{candi.party}}</p>
      </ion-label>
 

@@ -19,41 +19,46 @@ export class VotingListPage  {
 
   parties = ['assets/image/podujana.jpg','assets/image/hansayablack.png','assets/image/chair.png','assets/image/unpblack.jpg'];
 
-  async  ngOnInit() {
-    
-     await  this.httpService.getCandidates().subscribe(res => {
-       console.log('Candidate list');
-       console.log(res);
-       this.newCadidates = res;
+  // async  ngOnInit() {
+    ngOnInit() {
+    //  await  this.httpService.getCandidates().subscribe(res => {
+    //    console.log('Candidate list');
+    //    console.log(res);
+    //    this.newCadidates = res;
 
        
-     }, err => {
-       console.log('Error in receiving Candidates list');
-      });
+    //  }, err => {
+    //    console.log('Error in receiving Candidates list');
+    //   });
 
 
-     for(var index in this.newCadidates){
-       if(this.newCadidates[index].party === 'SLPP'){
-         this.newCadidates[index].img = this.parties[0];
-       } else if (this.newCadidates[index].party === 'UPFA'){
-        this.newCadidates[index].img = this.parties[1];
-       }else if (this.newCadidates[index].party === 'SLFP'){
-        this.newCadidates[index].img = this.parties[2];
-       }else if (this.newCadidates[index].party === 'UNP'){
-        this.newCadidates[index].img = this.parties[3];
-       } else {
-        this.newCadidates[index].img = this.parties[3];
-       }
-    }
+    //  for(var index in this.newCadidates){
+    //    if(this.newCadidates[index].party === 'SLPP'){
+    //      this.newCadidates[index].img = this.parties[0];
+    //    } else if (this.newCadidates[index].party === 'UPFA'){
+    //     this.newCadidates[index].img = this.parties[1];
+    //    }else if (this.newCadidates[index].party === 'SLFP'){
+    //     this.newCadidates[index].img = this.parties[2];
+    //    }else if (this.newCadidates[index].party === 'UNP'){
+    //     this.newCadidates[index].img = this.parties[3];
+    //    } else {
+    //     this.newCadidates[index].img = this.parties[3];
+    //    }
+    // }
 
 }
 
 
-  candidate = [{nameE: 'Gotabhaya Rajapaksha', nameS: 'ගෝඨාභය රාජපක්ෂ',party : 'SLPP', src:'assets/image/podujana.jpg' },
-            {nameE: 'Sajith Premadasa', nameS: 'සජිත් ප්‍රේමදාස', party: 'UPFA', src:'assets/image/hansayablack.png'},
-            {nameE: 'Maithripala Sirisena', nameS: 'මෛත්‍රීපාල සිරිසේන', party :'SLFP',src :'assets/image/chair.png'},
-            {nameE: 'Ranil Wickramasingha', nameS: 'රනිල් වික්‍රමසිංහ', party: 'UNP', src : 'assets/image/unpblack.jpg'}
-          ];
+  // candidate = [{nameE: 'Gotabhaya Rajapaksha', nameS: 'ගෝඨාභය රාජපක්ෂ',party : 'SLPP', src:'assets/image/podujana.jpg' },
+  //           {nameE: 'Sajith Premadasa', nameS: 'සජිත් ප්‍රේමදාස', party: 'UPFA', src:'assets/image/hansayablack.png'},
+  //           {nameE: 'Maithripala Sirisena', nameS: 'මෛත්‍රීපාල සිරිසේන', party :'SLFP',src :'assets/image/chair.png'},
+  //           {nameE: 'Ranil Wickramasingha', nameS: 'රනිල් වික්‍රමසිංහ', party: 'UNP', src : 'assets/image/unpblack.jpg'}
+  //         ];
+
+  candidate = [{nameE: 'Rinil Wijesinghe', party : 'UNP', src:'assets/image/unp.png' },
+  {nameE: 'Mehinda Rajawickrama', party: 'UPFA', src:'assets/image/podujana.jpg'}
+];
+
 
   async presentAlert() {
     const alert = await this.alertController.create({
